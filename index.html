@@ -10,8 +10,16 @@
   <div class="container">
     <h1>Extract Questions and Options from Image</h1>
     <input type="file" id="imageInput" accept="image/*">
-    <button id="processImage">Extract Questions</button>
-    <div id="questionContainer">
+    <button id="processImage">Extract Text</button>
+
+    <div id="textContainer" style="display: none; margin-top: 20px;">
+      <h2>Extracted Text</h2>
+      <textarea id="extractedText" rows="10" readonly></textarea>
+      <button id="generateQuestions" disabled>Generate Questions</button>
+    </div>
+
+    <div id="questionContainer" style="display: none; margin-top: 20px;">
+      <h2>Question and Options</h2>
       <p id="question"></p>
       <ul id="options"></ul>
       <button id="nextQuestion" disabled>Next</button>
