@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Extractor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Extract Questions and Options from Image</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="processImage">Extract Questions</button>
+    <div id="questionContainer">
+      <p id="question"></p>
+      <ul id="options"></ul>
+      <button id="nextQuestion" disabled>Next</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
