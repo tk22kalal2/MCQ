@@ -11,19 +11,28 @@ document.getElementById("processImage").addEventListener("click", () => {
   // Use Tesseract.js for OCR
   Tesseract.recognize(imageInput, "eng")
     .then(({ data: { text } }) => {
-      questions = parseQuestions(text);
-      if (questions.length > 0) {
-        document.getElementById("questionContainer").style.display = "block";
-        document.getElementById("nextQuestion").disabled = false;
-        showQuestion();
-      } else {
-        alert("No questions found in the image.");
-      }
+      document.getElementById("textContainer").style.display = "block";
+      document.getElementById("generateQuestions").disabled = false;
+      document.getElementById("extractedText").value = text;
     })
     .catch((err) => {
       console.error("OCR Error:", err);
       alert("Failed to extract text. Please try again.");
     });
+});
+
+document.getElementById("generateQuestions").addEventListener("click", () => {
+  const text = document.getElementById("extractedText").value;
+  questions = parseQuestions(text);
+
+  if (questions.length > 0) {
+    document.getElementById("questionContainer").style.display = "block";
+    document.getElementById("nextQuestion").disabled = false;
+    currentIndex = 0;
+    showQuestion();
+  } else {
+    alert("No questions found in the extracted text.");
+  }
 });
 
 document.getElementById("nextQuestion").addEventListener("click", () => {
